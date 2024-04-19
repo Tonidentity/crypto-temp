@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 
-const FollowComponent = ({
-  img,
-  topText,
-  bottomText,
-  joined,
-}) => {
+const FollowComponent = ({ img, topText, bottomText, joined, step }) => {
   return (
-    <div className="f-l">
-      {!joined && <img src={img} alt={topText} />}
-      {joined && (
-        <section className="check">
-          <img src="/assets/icons/check.svg" className="ci" />
+    <div className="fl-wrap">
+      <span className="step-sp">Step {step}</span>
+
+      <div className="f-l">
+        {!joined && <img src={img} alt={topText} />}
+        {joined && (
+          <section className="check">
+            <img src="/assets/icons/check.svg" className="ci" />
+          </section>
+        )}
+        <section>
+          <p>{topText}</p>
+          <span>{bottomText}</span>
         </section>
-      )}
-      <section>
-        <p>{topText}</p>
-        <span>{bottomText}</span>
-      </section>
+      </div>
     </div>
   );
 };
@@ -44,9 +43,7 @@ const App = () => {
       window.open("https://www.tiktok.com/@crypto", "_blank");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
-        setTiktokJoined(true, () => {
-          handleProceed();
-        });
+        setTiktokJoined(true, () => {});
       }, 2200);
       return;
     }
@@ -55,9 +52,7 @@ const App = () => {
       window.open("https://www.youtube.com/crypto", "_blank");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
-        setYoutubeJoined(true, () => {
-          handleProceed();
-        });
+        setYoutubeJoined(true, () => {});
       }, 2200);
       return;
     }
@@ -104,6 +99,7 @@ const App = () => {
           topText={"Follow @crypto on Tiktok"}
           bottomText={"@crypto is on Tiktok"}
           joined={tiktokJoined}
+          step={"1"}
         />
 
         {tiktokJoined && (
@@ -112,6 +108,7 @@ const App = () => {
             topText={"Subscribe to @crypto on Youtube"}
             bottomText={"@crypto on Youtube"}
             joined={youtubeJoined}
+            step={"1"}
           />
         )}
 
@@ -121,6 +118,7 @@ const App = () => {
             topText={"Subscribe to our Onlyfans"}
             bottomText={"@crypto is on Onlyfans"}
             joined={onlyfansJoined}
+            step={"1"}
           />
         )}
       </section>
