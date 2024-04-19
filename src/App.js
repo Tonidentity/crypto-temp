@@ -64,7 +64,7 @@ const App = () => {
 
     if (!onlyfansJoined) {
       window.open("https://onlyfans.com/crypto", "_blank");
-      tele.MainButton.text = "Continue with tasks";
+      tele.MainButton.text = "Done! Proceed Forward";
       setTimeout(() => {
         setOnlyfansJoined(true, () => {
           handleProceed();
@@ -78,11 +78,11 @@ const App = () => {
     }
   };
 
-  const handleProceed = () => {
-    if (onlyfansJoined && youtubeJoined && tiktokJoined) {
-      tele.MainButton.text = "Proceed to our channel";
-    }
-  };
+  // const handleProceed = () => {
+  //   if (onlyfansJoined && youtubeJoined && tiktokJoined) {
+  //     tele.MainButton.text = "Proceed to our channel";
+  //   }
+  // };
 
   tele.MainButton.onClick(handleClick);
 
