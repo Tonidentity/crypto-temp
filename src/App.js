@@ -60,11 +60,11 @@ const App = () => {
     if (!onlyfansJoined) {
       tele.MainButton.text = "Done! Proceed Forward";
       window.open("https://onlyfans.com/crypto", "_blank");
-      // setTimeout(() => {
-      //   setOnlyfansJoined(true, () => {
-      //     handleProceed();
-      //   });
-      // }, 2200);
+      setTimeout(() => {
+        setOnlyfansJoined(true, () => {
+          handleProceed();
+        });
+      }, 2200);
       return;
     }
 
