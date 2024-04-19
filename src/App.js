@@ -24,7 +24,6 @@ const FollowComponent = ({ img, topText, bottomText, joined, step }) => {
 
 const tele = window.Telegram.WebApp;
 const App = () => {
-  //Executes whenever query is changed
   useEffect(() => {
     tele.ready();
     tele.MainButton.show();
@@ -38,12 +37,22 @@ const App = () => {
   const [tiktokJoined, setTiktokJoined] = useState(false);
   const [onlyfansJoined, setOnlyfansJoined] = useState(false);
 
+  useEffect(() => {
+    const storedData = JSON.parse(sessionStorage.getItem("cryptoJoined") || "{}");
+    setYoutubeJoined(storedData.youtubeJoined || false);
+    setTiktokJoined(storedData.tiktokJoined || false);
+    setOnlyfansJoined(storedData.onlyfansJoined || false);
+  }, []);
+
   const handleClick = () => {
     if (!tiktokJoined) {
       window.open("https://www.tiktok.com/@crypto", "_blank", "rel=noreferrer noopener");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true);
+        sessionStorage.setItem("cryptoJoined", JSON.stringify({
+          tiktokJoined: true,
+        }));
       }, 2200);
       return;
     }
@@ -53,6 +62,10 @@ const App = () => {
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true);
+        sessionStorage.setItem("cryptoJoined", JSON.stringify({
+          tiktokJoined: true,
+          youtubeJoined: true,
+        }));
       }, 2200);
       return;
     }
@@ -62,6 +75,11 @@ const App = () => {
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true);
+        sessionStorage.setItem("cryptoJoined", JSON.stringify({
+          tiktokJoined: true,
+          youtubeJoined: true,
+          onlyfansJoined: true,
+        }));
       }, 2200);
       return;
     }
@@ -71,12 +89,6 @@ const App = () => {
     }
   };
 
-  // const handleProceed = () => {
-  //   if (onlyfansJoined && youtubeJoined && tiktokJoined) {
-  //     tele.MainButton.text = "Proceed to our channel";
-  //   }
-  // };
-
   tele.MainButton.onClick(handleClick);
 
   return (
@@ -84,7 +96,7 @@ const App = () => {
       <h1>Welcome to @crypto</h1>
       <section className="s-1">
         <section>
-          <img src="/assets/images/logo.jpg" />
+          <img src="/assets/images/logo.jpg" alt="@crypto" />
           <span>@crypto</span>
         </section>
         <p>Get 100,000 $Loot by joining the @Crypto Army</p>
@@ -124,4 +136,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App
