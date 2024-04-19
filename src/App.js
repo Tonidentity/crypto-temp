@@ -5,12 +5,10 @@ const FollowComponent = ({
   img,
   topText,
   bottomText,
-  link,
   joined,
-  handleClick,
 }) => {
   return (
-    <a className="f-l" onClick={() => handleClick()}>
+    <div className="f-l">
       {!joined && <img src={img} alt={topText} />}
       {joined && (
         <section className="check">
@@ -21,7 +19,7 @@ const FollowComponent = ({
         <p>{topText}</p>
         <span>{bottomText}</span>
       </section>
-    </a>
+    </div>
   );
 };
 
@@ -49,7 +47,7 @@ const App = () => {
         setTiktokJoined(true, () => {
           handleProceed();
         });
-      }, 3000);
+      }, 2200);
       return;
     }
 
@@ -60,7 +58,7 @@ const App = () => {
         setYoutubeJoined(true, () => {
           handleProceed();
         });
-      }, 3000);
+      }, 2200);
       return;
     }
 
@@ -71,7 +69,7 @@ const App = () => {
         setOnlyfansJoined(true, () => {
           handleProceed();
         });
-      }, 3000);
+      }, 2200);
       return;
     }
 
@@ -86,7 +84,7 @@ const App = () => {
     }
   };
 
-  tele.onEvent("mainButtonClicked", handleClick);
+  tele.MainButton.onClick(handleClick);
 
   return (
     <main className="app_wrapper">
@@ -105,27 +103,26 @@ const App = () => {
           img={"/assets/images/tiktok.png"}
           topText={"Follow @crypto on Tiktok"}
           bottomText={"@crypto is on Tiktok"}
-          link={"https://www.tiktok.com/@crypto"}
           joined={tiktokJoined}
-          handleClick={handleClick}
-        />
-        <FollowComponent
-          img={"/assets/images/youtube.png"}
-          topText={"Subscribe to @crypto on Youtube"}
-          bottomText={"@crypto on Youtube"}
-          link={"https://www.youtube.com/crypto"}
-          joined={youtubeJoined}
-          handleClick={handleClick}
         />
 
-        <FollowComponent
-          img={"/assets/images/onlyfans.png"}
-          topText={"Subscribe to our Onlyfans"}
-          bottomText={"@crypto is on Onlyfans"}
-          link={"https://onlyfans.com/crypto"}
-          joined={onlyfansJoined}
-          handleClick={handleClick}
-        />
+        {tiktokJoined && (
+          <FollowComponent
+            img={"/assets/images/youtube.png"}
+            topText={"Subscribe to @crypto on Youtube"}
+            bottomText={"@crypto on Youtube"}
+            joined={youtubeJoined}
+          />
+        )}
+
+        {youtubeJoined && (
+          <FollowComponent
+            img={"/assets/images/onlyfans.png"}
+            topText={"Subscribe to our Onlyfans"}
+            bottomText={"@crypto is on Onlyfans"}
+            joined={onlyfansJoined}
+          />
+        )}
       </section>
     </main>
   );
