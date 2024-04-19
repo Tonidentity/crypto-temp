@@ -106,7 +106,7 @@ const App = () => {
             topText={"Subscribe to @crypto on Youtube"}
             bottomText={"@crypto on Youtube"}
             joined={youtubeJoined}
-            step={"1"}
+            step={"2"}
           />
         )}
 
@@ -116,7 +116,7 @@ const App = () => {
             topText={"Subscribe to our Onlyfans"}
             bottomText={"@crypto is on Onlyfans"}
             joined={onlyfansJoined}
-            step={"1"}
+            step={"3"}
           />
         )}
       </section>
