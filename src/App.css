@@ -76,11 +76,11 @@ h1 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 20px;
   margin: 12px 0px;
-  padding: 20px;
+  padding: 20px 18px;
   text-decoration: none;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
 
   img {
     width: 50px;

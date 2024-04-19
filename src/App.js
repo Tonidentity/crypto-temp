@@ -34,7 +34,7 @@ const App = () => {
     tele.MainButton.text = "Start with tasks";
     tele.MainButton.color = "#F4AD00";
     tele.MainButton.textColor = "#fff";
-    tele.expand()
+    tele.expand();
   }, []);
 
   const [youtubeJoined, setYoutubeJoined] = useState(false);
@@ -42,23 +42,23 @@ const App = () => {
   const [onlyfansJoined, setOnlyfansJoined] = useState(false);
 
   const handleClick = () => {
-    if (!youtubeJoined) {
-      window.open("https://www.youtube.com/crypto", "_blank");
+    if (!tiktokJoined) {
+      window.open("https://www.tiktok.com/@crypto", "_blank");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
-        setYoutubeJoined(true, ()=>{
-        handleProceed();
+        setTiktokJoined(true, () => {
+          handleProceed();
         });
       }, 3000);
       return;
     }
 
-    if (!tiktokJoined) {
-      window.open("https://www.tiktok.com/@crypto", "_blank");
+    if (!youtubeJoined) {
+      window.open("https://www.youtube.com/crypto", "_blank");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
-        setTiktokJoined(true, ()=>{
-        handleProceed();
+        setYoutubeJoined(true, () => {
+          handleProceed();
         });
       }, 3000);
       return;
@@ -68,8 +68,8 @@ const App = () => {
       window.open("https://onlyfans.com/crypto", "_blank");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
-        setOnlyfansJoined(true, ()=>{
-        handleProceed();
+        setOnlyfansJoined(true, () => {
+          handleProceed();
         });
       }, 3000);
       return;
@@ -86,7 +86,7 @@ const App = () => {
     }
   };
 
-  tele.onEvent("mainButtonClicked", handleClick)
+  tele.onEvent("mainButtonClicked", handleClick);
 
   return (
     <main className="app_wrapper">
@@ -102,20 +102,19 @@ const App = () => {
       <section className="s-2">
         <h2>Steps to Join the @Crypto Army</h2>
         <FollowComponent
-          img={"/assets/images/youtube.png"}
-          topText={"Subscribe to @crypto on Youtube"}
-          bottomText={"@crypto on Youtube"}
-          link={"https://www.youtube.com/crypto"}
-          joined={youtubeJoined}
-          handleClick={handleClick}
-        />
-
-        <FollowComponent
           img={"/assets/images/tiktok.png"}
           topText={"Follow @crypto on Tiktok"}
           bottomText={"@crypto is on Tiktok"}
           link={"https://www.tiktok.com/@crypto"}
           joined={tiktokJoined}
+          handleClick={handleClick}
+        />
+        <FollowComponent
+          img={"/assets/images/youtube.png"}
+          topText={"Subscribe to @crypto on Youtube"}
+          bottomText={"@crypto on Youtube"}
+          link={"https://www.youtube.com/crypto"}
+          joined={youtubeJoined}
           handleClick={handleClick}
         />
 
