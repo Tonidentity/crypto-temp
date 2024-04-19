@@ -28,6 +28,7 @@ const App = () => {
   useEffect(() => {
     tele.ready();
     tele.MainButton.show();
+    tele.BackButton.show()
     tele.MainButton.text = "Start with tasks";
     tele.MainButton.color = "#F4AD00";
     tele.MainButton.textColor = "#fff";
@@ -40,7 +41,7 @@ const App = () => {
 
   const handleClick = () => {
     if (!tiktokJoined) {
-      window.open("https://www.tiktok.com/@crypto", "_blank");
+      window.open("https://www.tiktok.com/@crypto", "_self");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true, () => {});
@@ -49,7 +50,7 @@ const App = () => {
     }
 
     if (!youtubeJoined) {
-      window.open("https://www.youtube.com/crypto", "_blank");
+      window.open("https://www.youtube.com/crypto", "_self");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true, () => {});
@@ -58,7 +59,7 @@ const App = () => {
     }
 
     if (!onlyfansJoined) {
-      window.open("https://onlyfans.com/crypto", "_blank");
+      window.open("https://onlyfans.com/crypto", "_self");
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true, () => {});
@@ -78,6 +79,7 @@ const App = () => {
   // };
 
   tele.MainButton.onClick(handleClick);
+  tele.BackButton.onClick(()=>window.history.back())
 
   return (
     <main className="app_wrapper">
