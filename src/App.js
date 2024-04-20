@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import "./App.css"
-import "./index.css"
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
 const FollowComponent = ({ img, topText, bottomText, joined, step }) => {
   return (
     <div className="fl-wrap">
       <span className="step-sp">Step {step}</span>
+
       <div className="f-l">
         {!joined && <img src={img} alt={topText} />}
         {joined && (
@@ -24,6 +24,7 @@ const FollowComponent = ({ img, topText, bottomText, joined, step }) => {
 
 const tele = window.Telegram.WebApp;
 const App = () => {
+  //Executes whenever query is changed
   useEffect(() => {
     tele.ready();
     tele.MainButton.show();
@@ -33,80 +34,61 @@ const App = () => {
     tele.expand();
   }, []);
 
-  const [tiktokJoined, setTiktokJoined] = useState(
-    localStorage.getItem("tiktok") == "true"
-  );
-  const [youtubeJoined, setYoutubeJoined] = useState(
-    localStorage.getItem("youtube") == "true"
-  );
-  const [onlyfansJoined, setOnlyfansJoined] = useState(
-    localStorage.getItem("onlyfans") == "true"
-  );
+  const [youtubeJoined, setYoutubeJoined] = useState(false);
+  const [tiktokJoined, setTiktokJoined] = useState(false);
+  const [onlyfansJoined, setOnlyfansJoined] = useState(false);
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      if(localStorage.getItem("tiktok")=="true"){
-        setTiktokJoined(true)
-      }
-
-      if(localStorage.getItem("youtube")=="true"){
-        setYoutubeJoined(true)
-      }
-
-      if(localStorage.getItem("onlyfans")=="true"){
-        setOnlyfansJoined(true)
-      }
-    };
-
-    handleStorageChange(); // Initialize the joined state
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
-
-  const handleClick = (link) => {
-    window.open(link, "_blank", "rel=noreferrer noopener");
-  };
-
-  tele.MainButton.onClick(() => {
+  const handleLinks = () => {
     if (!tiktokJoined) {
-      handleClick("https://www.tiktok.com/@crypto");
+      window.open("https://www.tiktok.com/@crypto", "_blank");
+      tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
-        tele.MainButton.text = "Continue with tasks";
-        localStorage.setItem("tiktok", true);
-      }, 1800);
+        setTiktokJoined(true);
+      }, 1300);
       return;
     }
 
-    if (youtubeJoined) {
-      handleClick("https://www.youtube.com/crypto");
+    if (!youtubeJoined) {
+      window.open("https://www.youtube.com/crypto", "_blank");
+      tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
-        tele.MainButton.text = "Continue with tasks";
-        localStorage.setItem("youtube", true);
-      }, 1800);
+        setYoutubeJoined(true);
+      }, 1300);
       return;
     }
 
-    if (onlyfansJoined) {
-      handleClick("https://onlyfans.com/crypto");
+    if (!onlyfansJoined) {
+      window.open("https://onlyfans.com/crypto", "_blank");
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
-        localStorage.setItem("onlyfans", true);
-      }, 1800);
+        setOnlyfansJoined(true);
+      }, 1300);
       return;
     }
+  };
 
-    window.location.href = "https://t.me/crypto";
-  });
+  const handleClick = () => {
+    if (document.querySelectorAll(".check").length == 3) {
+      window.location.href = "t.me/crypto"
+    } else {
+      handleLinks();
+    }
+  };
+
+  // const handleProceed = () => {
+  //   if (onlyfansJoined && youtubeJoined && tiktokJoined) {
+  //     tele.MainButton.text = "Proceed to our channel";
+  //   }
+  // };
+
+  tele.MainButton.onClick(handleClick);
 
   return (
     <main className="app_wrapper">
       <h1>Welcome to @crypto</h1>
       <section className="s-1">
         <section>
-          <img src="/assets/images/logo.jpg" alt="@crypto" />
+          <img src="/assets/images/logo.jpg" />
           <span>@crypto</span>
         </section>
         <p>Get 100,000 $Loot by joining the @Crypto Army</p>
