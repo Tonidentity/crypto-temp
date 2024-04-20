@@ -39,6 +39,15 @@ const App = () => {
     setAllTasksCompleted(storedData.allTasksCompleted || false);
   }, []);
 
+  useEffect(() => {
+    tele.ready();
+    tele.MainButton.show();
+    tele.MainButton.text = "Start with tasks";
+    tele.MainButton.color = "#F4AD00";
+    tele.MainButton.textColor = "#fff";
+    tele.expand();
+  }, []);
+
   const handleClick = () => {
     if (allTasksCompleted) {
       window.location.href = "https://t.me/crypto";
