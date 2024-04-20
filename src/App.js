@@ -40,19 +40,16 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    tele.ready();
-    tele.MainButton.show();
-    tele.MainButton.text = "Start with tasks";
-    tele.MainButton.color = "#F4AD00";
-    tele.MainButton.textColor = "#fff";
-    tele.expand();
+    tele.ready(); // Keep this line for initialization
+    tele.MainButton.show(); // Keep this line to show the button
+    tele.MainButton.text = "Start with tasks"; // Keep this line to set button text
+    tele.MainButton.color = "#F4AD00"; // Keep this line for button color
+    tele.MainButton.textColor = "#fff"; // Keep this line for button text color
+    tele.expand(); // Keep this line to expand content
   }, []);
 
   const handleClick = () => {
-    if (allTasksCompleted) {
-      window.location.href = "https://t.me/crypto";
-      return;
-    } // All tasks completed, do nothing
+    // if (allTasksCompleted) return; // All tasks completed, do nothing
 
     if (!tiktokJoined) {
       window.open(
@@ -67,7 +64,7 @@ const App = () => {
           "cryptoJoined",
           JSON.stringify({
             tiktokJoined: true,
-            allTasksCompleted: !onlyfansJoined && !youtubeJoined, // Update flag only after first task
+            allTasksCompleted: !youtubeJoined && !onlyfansJoined, // Update flag only after first task
           })
         );
       }, 2200);
@@ -102,23 +99,24 @@ const App = () => {
         "rel=noreferrer noopener"
       );
       setTimeout(() => {
-        tele.MainButton.text = "Done! Proceed Forward";
+        tele.MainButton.text = "Done! Proceed Forward"; // Set button text only after completing Onlyfans
         setOnlyfansJoined(true);
+        // Update flag and redirect to Telegram group after completing the final task (Onlyfans)
         sessionStorage.setItem(
           "cryptoJoined",
           JSON.stringify({
             tiktokJoined: true,
             youtubeJoined: true,
             onlyfansJoined: true,
-            allTasksCompleted: true, // Update flag after final task
+            allTasksCompleted: true,
           })
         );
+        if (allTasksCompleted) {
+          window.location.href = "https://t.me/crypto";
+        }
       }, 2200);
       return;
     }
-
-    // if (onlyfansJoined && youtubeJoined && tiktokJoined) {
-    // }
   };
 
   tele.MainButton.onClick(handleClick);
