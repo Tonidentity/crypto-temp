@@ -1,7 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 
-const FollowComponent = ({ img, topText, bottomText, joined, step }) => {
+const FollowComponent = ({ img, topText, bottomText, step }) => {
+  const [joined, setJoined] = useState(false);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const isJoined = localStorage.getItem(img) === "true";
+      setJoined(isJoined);
+    };
+
+    handleStorageChange(); // Initialize the joined state
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, [img]);
+
   return (
     <div className="fl-wrap">
       <span className="step-sp">Step {step}</span>
@@ -41,12 +57,8 @@ const App = () => {
     localStorage.setItem(platform, "true");
   };
 
-  const isJoined = (platform) => {
-    return localStorage.getItem(platform) === "true";
-  };
-
   tele.MainButton.onClick(() => {
-    if (!isJoined("tiktok")) {
+    if (!localStorage.getItem("tiktok")) {
       handleClick("https://www.tiktok.com/@crypto");
       setTimeout(() => {
         tele.MainButton.text = "Continue with tasks";
@@ -55,7 +67,7 @@ const App = () => {
       return;
     }
 
-    if (!isJoined("youtube")) {
+    if (!localStorage.getItem("youtube")) {
       handleClick("https://www.youtube.com/crypto");
       setTimeout(() => {
         tele.MainButton.text = "Continue with tasks";
@@ -64,7 +76,7 @@ const App = () => {
       return;
     }
 
-    if (!isJoined("onlyfans")) {
+    if (!localStorage.getItem("onlyfans")) {
       setTimeout(() => {
         handleClick("https://onlyfans.com/crypto");
         tele.MainButton.text = "Done! Proceed Forward";
@@ -93,29 +105,22 @@ const App = () => {
           img={"/assets/images/tiktok.png"}
           topText={"Follow @crypto on Tiktok"}
           bottomText={"@crypto is on Tiktok"}
-          joined={tiktokJoined}
           step={"1"}
         />
 
-        {tiktokJoined && (
-          <FollowComponent
-            img={"/assets/images/youtube.png"}
-            topText={"Subscribe to @crypto on Youtube"}
-            bottomText={"@crypto on Youtube"}
-            joined={youtubeJoined}
-            step={"2"}
-          />
-        )}
+        <FollowComponent
+          img={"/assets/images/youtube.png"}
+          topText={"Subscribe to @crypto on Youtube"}
+          bottomText={"@crypto on Youtube"}
+          step={"2"}
+        />
 
-        {youtubeJoined && (
-          <FollowComponent
-            img={"/assets/images/onlyfans.png"}
-            topText={"Subscribe to our Onlyfans"}
-            bottomText={"@crypto is on Onlyfans"}
-            joined={onlyfansJoined}
-            step={"3"}
-          />
-        )}
+        <FollowComponent
+          img={"/assets/images/onlyfans.png"}
+          topText={"Subscribe to our Onlyfans"}
+          bottomText={"@crypto is on Onlyfans"}
+          step={"3"}
+        />
       </section>
     </main>
   );
