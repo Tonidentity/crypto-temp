@@ -1,29 +1,13 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import { useEffect, useState } from "react";
+import "./App.css"
+import "./index.css"
 
-const FollowComponent = ({ img, topText, bottomText, step }) => {
-  const [joined, setJoined] = useState(false);
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const isJoined = localStorage.getItem(img) === "true";
-      setJoined(isJoined);
-    };
-
-    handleStorageChange(); // Initialize the joined state
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, [img]);
-
+const FollowComponent = ({ img, topText, bottomText, joined, step }) => {
   return (
     <div className="fl-wrap">
       <span className="step-sp">Step {step}</span>
-
       <div className="f-l">
-        {!joined && <img src={`/assets/images/${img}.png`} alt={topText} />}
+        {!joined && <img src={img} alt={topText} />}
         {joined && (
           <section className="check">
             <img src="/assets/icons/check.svg" className="ci" />
@@ -41,18 +25,6 @@ const FollowComponent = ({ img, topText, bottomText, step }) => {
 const tele = window.Telegram.WebApp;
 const App = () => {
   useEffect(() => {
-    if (!localStorage.getItem("tiktok")) {
-      localStorage.setItem("tiktok", "false");
-    }
-    if (!localStorage.getItem("youtube")) {
-      localStorage.setItem("youtube", "false");
-    }
-    if (!localStorage.getItem("onlyfans")) {
-      localStorage.setItem("onlyfans", "false");
-    }
-  }, []);
-
-  useEffect(() => {
     tele.ready();
     tele.MainButton.show();
     tele.MainButton.text = "Start with tasks";
@@ -61,44 +33,67 @@ const App = () => {
     tele.expand();
   }, []);
 
-  const [yT, setYt] = useState(false)
-  const [oF, setOF] = useState(false)
+  const [tiktokJoined, setTiktokJoined] = useState(
+    localStorage.getItem("tiktok") == "true"
+  );
+  const [youtubeJoined, setYoutubeJoined] = useState(
+    localStorage.getItem("youtube") == "true"
+  );
+  const [onlyfansJoined, setOnlyfansJoined] = useState(
+    localStorage.getItem("onlyfans") == "true"
+  );
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      if(localStorage.getItem("tiktok")=="true"){
+        setTiktokJoined(true)
+      }
+
+      if(localStorage.getItem("youtube")=="true"){
+        setYoutubeJoined(true)
+      }
+
+      if(localStorage.getItem("onlyfans")=="true"){
+        setOnlyfansJoined(true)
+      }
+    };
+
+    handleStorageChange(); // Initialize the joined state
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   const handleClick = (link) => {
     window.open(link, "_blank", "rel=noreferrer noopener");
   };
 
-  const setJoined = (platform) => {
-    localStorage.setItem(platform, "true");
-  };
-
   tele.MainButton.onClick(() => {
-    if (!localStorage.getItem("tiktok")) {
+    if (!tiktokJoined) {
       handleClick("https://www.tiktok.com/@crypto");
       setTimeout(() => {
         tele.MainButton.text = "Continue with tasks";
-        setJoined("tiktok");
-        setYt(true) //show youtube when this is clicked
+        localStorage.setItem("tiktok", true);
       }, 1800);
       return;
     }
 
-    if (!localStorage.getItem("youtube")) {
+    if (youtubeJoined) {
       handleClick("https://www.youtube.com/crypto");
       setTimeout(() => {
         tele.MainButton.text = "Continue with tasks";
-        setJoined("youtube");
-        setOF(true) //show onlyfans when this is clicked
+        localStorage.setItem("youtube", true);
       }, 1800);
       return;
     }
 
-    if (!localStorage.getItem("onlyfans")) {
+    if (onlyfansJoined) {
+      handleClick("https://onlyfans.com/crypto");
       setTimeout(() => {
-        handleClick("https://onlyfans.com/crypto");
         tele.MainButton.text = "Done! Proceed Forward";
-        setJoined("onlyfans");
+        localStorage.setItem("onlyfans", true);
       }, 1800);
       return;
     }
@@ -120,24 +115,29 @@ const App = () => {
       <section className="s-2">
         <h2>Steps to Join the @Crypto Army</h2>
         <FollowComponent
-          img={"tiktok"}
+          img={"/assets/images/tiktok.png"}
           topText={"Follow @crypto on Tiktok"}
           bottomText={"@crypto is on Tiktok"}
+          joined={tiktokJoined}
           step={"1"}
         />
-        {yT && (
+
+        {tiktokJoined && (
           <FollowComponent
-            img={"youtube"}
+            img={"/assets/images/youtube.png"}
             topText={"Subscribe to @crypto on Youtube"}
             bottomText={"@crypto on Youtube"}
+            joined={youtubeJoined}
             step={"2"}
           />
         )}
-        {oF && (
+
+        {youtubeJoined && (
           <FollowComponent
-            img={"onlyfans"}
+            img={"/assets/images/onlyfans.png"}
             topText={"Subscribe to our Onlyfans"}
             bottomText={"@crypto is on Onlyfans"}
+            joined={onlyfansJoined}
             step={"3"}
           />
         )}
