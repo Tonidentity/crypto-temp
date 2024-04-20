@@ -23,7 +23,7 @@ const FollowComponent = ({ img, topText, bottomText, step }) => {
       <span className="step-sp">Step {step}</span>
 
       <div className="f-l">
-        {!joined && <img src={img} alt={topText} />}
+        {!joined && <img src={`/assets/images/${img}.png`} alt={topText} />}
         {joined && (
           <section className="check">
             <img src="/assets/icons/check.svg" className="ci" />
@@ -40,7 +40,6 @@ const FollowComponent = ({ img, topText, bottomText, step }) => {
 
 const tele = window.Telegram.WebApp;
 const App = () => {
-
   useEffect(() => {
     if (!localStorage.getItem("tiktok")) {
       localStorage.setItem("tiktok", "false");
@@ -52,7 +51,7 @@ const App = () => {
       localStorage.setItem("onlyfans", "false");
     }
   }, []);
-  
+
   useEffect(() => {
     tele.ready();
     tele.MainButton.show();
@@ -61,6 +60,10 @@ const App = () => {
     tele.MainButton.textColor = "#fff";
     tele.expand();
   }, []);
+
+  const [yT, setYt] = useState(false)
+  const [oF, setOF] = useState(false)
+
 
   const handleClick = (link) => {
     window.open(link, "_blank", "rel=noreferrer noopener");
@@ -76,6 +79,7 @@ const App = () => {
       setTimeout(() => {
         tele.MainButton.text = "Continue with tasks";
         setJoined("tiktok");
+        setYt(true) //show youtube when this is clicked
       }, 1800);
       return;
     }
@@ -85,6 +89,7 @@ const App = () => {
       setTimeout(() => {
         tele.MainButton.text = "Continue with tasks";
         setJoined("youtube");
+        setOF(true) //show onlyfans when this is clicked
       }, 1800);
       return;
     }
@@ -115,25 +120,27 @@ const App = () => {
       <section className="s-2">
         <h2>Steps to Join the @Crypto Army</h2>
         <FollowComponent
-          img={"/assets/images/tiktok.png"}
+          img={"tiktok"}
           topText={"Follow @crypto on Tiktok"}
           bottomText={"@crypto is on Tiktok"}
           step={"1"}
         />
-
-        <FollowComponent
-          img={"/assets/images/youtube.png"}
-          topText={"Subscribe to @crypto on Youtube"}
-          bottomText={"@crypto on Youtube"}
-          step={"2"}
-        />
-
-        <FollowComponent
-          img={"/assets/images/onlyfans.png"}
-          topText={"Subscribe to our Onlyfans"}
-          bottomText={"@crypto is on Onlyfans"}
-          step={"3"}
-        />
+        {yT && (
+          <FollowComponent
+            img={"youtube"}
+            topText={"Subscribe to @crypto on Youtube"}
+            bottomText={"@crypto on Youtube"}
+            step={"2"}
+          />
+        )}
+        {oF && (
+          <FollowComponent
+            img={"onlyfans"}
+            topText={"Subscribe to our Onlyfans"}
+            bottomText={"@crypto is on Onlyfans"}
+            step={"3"}
+          />
+        )}
       </section>
     </main>
   );
