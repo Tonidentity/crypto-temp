@@ -24,69 +24,92 @@ const FollowComponent = ({ img, topText, bottomText, joined, step }) => {
 
 const tele = window.Telegram.WebApp;
 const App = () => {
-  useEffect(() => {
-    tele.ready();
-    tele.MainButton.show();
-    tele.MainButton.text = "Start with tasks";
-    tele.MainButton.color = "#F4AD00";
-    tele.MainButton.textColor = "#fff";
-    tele.expand();
-  }, []);
-
   const [youtubeJoined, setYoutubeJoined] = useState(false);
   const [tiktokJoined, setTiktokJoined] = useState(false);
   const [onlyfansJoined, setOnlyfansJoined] = useState(false);
+  const [allTasksCompleted, setAllTasksCompleted] = useState(false);
 
   useEffect(() => {
-    const storedData = JSON.parse(sessionStorage.getItem("cryptoJoined") || "{}");
+    const storedData = JSON.parse(
+      sessionStorage.getItem("cryptoJoined") || "{}"
+    );
     setYoutubeJoined(storedData.youtubeJoined || false);
     setTiktokJoined(storedData.tiktokJoined || false);
     setOnlyfansJoined(storedData.onlyfansJoined || false);
+    setAllTasksCompleted(storedData.allTasksCompleted || false);
   }, []);
 
   const handleClick = () => {
+    if (allTasksCompleted) {
+      window.location.href = "https://t.me/crypto";
+      return;
+    } // All tasks completed, do nothing
+
     if (!tiktokJoined) {
-      window.open("https://www.tiktok.com/@crypto", "_blank", "rel=noreferrer noopener");
+      window.open(
+        "https://www.tiktok.com/@crypto",
+        "_blank",
+        "rel=noreferrer noopener"
+      );
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true);
-        sessionStorage.setItem("cryptoJoined", JSON.stringify({
-          tiktokJoined: true,
-        }));
+        sessionStorage.setItem(
+          "cryptoJoined",
+          JSON.stringify({
+            tiktokJoined: true,
+            allTasksCompleted: !onlyfansJoined && !youtubeJoined, // Update flag only after first task
+          })
+        );
       }, 2200);
       return;
     }
 
     if (!youtubeJoined) {
-      window.open("https://www.youtube.com/crypto", "_blank", "rel=noreferrer noopener");
+      window.open(
+        "https://www.youtube.com/crypto",
+        "_blank",
+        "rel=noreferrer noopener"
+      );
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true);
-        sessionStorage.setItem("cryptoJoined", JSON.stringify({
-          tiktokJoined: true,
-          youtubeJoined: true,
-        }));
+        sessionStorage.setItem(
+          "cryptoJoined",
+          JSON.stringify({
+            tiktokJoined: true,
+            youtubeJoined: true,
+            allTasksCompleted: !onlyfansJoined, // Update flag after second task
+          })
+        );
       }, 2200);
       return;
     }
 
     if (!onlyfansJoined) {
-      window.open("https://onlyfans.com/crypto", "_blank", "rel=noreferrer noopener");
+      window.open(
+        "https://onlyfans.com/crypto",
+        "_blank",
+        "rel=noreferrer noopener"
+      );
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true);
-        sessionStorage.setItem("cryptoJoined", JSON.stringify({
-          tiktokJoined: true,
-          youtubeJoined: true,
-          onlyfansJoined: true,
-        }));
+        sessionStorage.setItem(
+          "cryptoJoined",
+          JSON.stringify({
+            tiktokJoined: true,
+            youtubeJoined: true,
+            onlyfansJoined: true,
+            allTasksCompleted: true, // Update flag after final task
+          })
+        );
       }, 2200);
       return;
     }
 
-    if (onlyfansJoined && youtubeJoined && tiktokJoined) {
-      window.location.href = "https://t.me/crypto";
-    }
+    // if (onlyfansJoined && youtubeJoined && tiktokJoined) {
+    // }
   };
 
   tele.MainButton.onClick(handleClick);
@@ -136,4 +159,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;
