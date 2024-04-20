@@ -40,6 +40,19 @@ const FollowComponent = ({ img, topText, bottomText, step }) => {
 
 const tele = window.Telegram.WebApp;
 const App = () => {
+
+  useEffect(() => {
+    if (!localStorage.getItem("tiktok")) {
+      localStorage.setItem("tiktok", "false");
+    }
+    if (!localStorage.getItem("youtube")) {
+      localStorage.setItem("youtube", "false");
+    }
+    if (!localStorage.getItem("onlyfans")) {
+      localStorage.setItem("onlyfans", "false");
+    }
+  }, []);
+  
   useEffect(() => {
     tele.ready();
     tele.MainButton.show();
