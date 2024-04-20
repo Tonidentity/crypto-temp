@@ -69,7 +69,7 @@ const App = () => {
 
   const handleClick = () => {
     if (document.querySelectorAll(".check").length == 3) {
-      window.location.href = "t.me/crypto"
+      window.location.href = "https://t.me/crypto"
     } else {
       handleLinks();
     }
@@ -85,7 +85,7 @@ const App = () => {
 
   return (
     <main className="app_wrapper">
-      <h1>Welcome to @crypto</h1>
+      <h1 onClick={handleClick}>Welcome to @crypto</h1>
       <section className="s-1">
         <section>
           <img src="/assets/images/logo.jpg" />
