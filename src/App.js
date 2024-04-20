@@ -48,28 +48,28 @@ const App = () => {
   tele.MainButton.onClick(() => {
     if (!isJoined("tiktok")) {
       handleClick("https://www.tiktok.com/@crypto");
-      tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
+        tele.MainButton.text = "Continue with tasks";
         setJoined("tiktok");
-      }, 2200);
+      }, 1800);
       return;
     }
 
     if (!isJoined("youtube")) {
       handleClick("https://www.youtube.com/crypto");
-      tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
+        tele.MainButton.text = "Continue with tasks";
         setJoined("youtube");
-      }, 2200);
+      }, 1800);
       return;
     }
 
     if (!isJoined("onlyfans")) {
-      handleClick("https://onlyfans.com/crypto");
       setTimeout(() => {
+        handleClick("https://onlyfans.com/crypto");
         tele.MainButton.text = "Done! Proceed Forward";
         setJoined("onlyfans");
-      }, 2200);
+      }, 1800);
       return;
     }
 
