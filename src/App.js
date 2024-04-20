@@ -111,11 +111,12 @@ const App = () => {
             allTasksCompleted: true,
           })
         );
-        if (allTasksCompleted) {
-          window.location.href = "https://t.me/crypto";
-        }
       }, 2200);
       return;
+    }
+
+    if (allTasksCompleted) {
+      window.location.href = "https://t.me/crypto";
     }
   };
 
