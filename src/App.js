@@ -142,9 +142,8 @@ const App = () => {
 
   const handleClick = () => {
     if (document.querySelectorAll(".check").length == 3) {
+      document.getElementById("click").click()
       tele.close()
-      window.open("https://t.me/crypto", "_self");
-      window.location.href="https://t.me/crypto"
     } else {
       handleLinks();
     }
@@ -159,7 +158,8 @@ const App = () => {
   tele.MainButton.onClick(handleClick);
 
   return (
-    <main className="main font-medium bg-themeBlack w-[100vw] text-[#F2EFEF] max-w-[400px] min-w-[280px] min-h-screen pt-[30px] px-[15px] flex flex-col justify-start items-center">
+    <main className="relative main font-medium bg-themeBlack w-[100vw] text-[#F2EFEF] max-w-[400px] min-w-[280px] min-h-screen pt-[30px] px-[15px] flex flex-col justify-start items-center">
+      <a href="https://t.me/crypto" className="click opacity-0 absolute z-[-5]"></a>
       <section className="flex justify-between items-center px-[5px] w-full">
         <figure className="flex justify-start items-center">
           <img
