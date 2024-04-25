@@ -17,7 +17,7 @@ const FollowComponent = ({ joined, step, type, prompt }) => {
   return (
     <>
       {type == 1 && (
-        <section className="w-full my-[20px] relative h-[93px] flex justify-center items-center">
+        <section className="w-full mb-[20px] mt-[10px] relative h-[93px] flex justify-center items-center">
           {/* Border image */}
           <img
             src="/assets/images/gradient_border.svg"
@@ -191,13 +191,15 @@ const App = () => {
         className="opacity-0 absolute z-[-5]"
         id="click"
       ></a>
+      {/* Navbar */}
       <section className="flex justify-between items-center px-[5px] w-full">
         <figure className="flex justify-start items-center">
-          <img
+          {/* <img
             src="/assets/icons/nav_logo.svg"
             className="w-[30px] h-[30px] mr-[5px]"
-          />
-          <img src="/assets/images/welcome.png" className="h-[24px]" />
+          /> */}
+          <img src="/assets/images/welcome.png" className="h-[24px] mr-[12px]" />
+          <img src="/assets/icons/@Welcome.svg" className="h-[24px]" />
         </figure>
 
         <figure className="flex justify-start">
@@ -208,14 +210,17 @@ const App = () => {
           <img src="/assets/icons/Group.svg" className="w-[24px] h-[24px]" />
         </figure>
       </section>
+
       {/* White Line */}
       <figure className="w-full h-[10px] mt-[20px]">
         <img src="/assets/icons/Navbar Line.svg" className="w-full h-full" />
       </figure>
 
-      <figure className="h-[260px] w-[320px] mt-[20px]">
-        <img src="/assets/icons/Group 33562.svg" className="w-full h-full" />
-      </figure>
+      {/* Logo video loop */}
+
+      <video autoPlay loop muted className="h-[260px] w-full">
+        <source src="/assets/videos/logo.mp4" className="w-full h-full" />
+      </video>
 
       <FollowComponent type={1} />
 
