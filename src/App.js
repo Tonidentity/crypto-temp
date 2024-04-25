@@ -147,10 +147,15 @@ const App = () => {
   };
 
   const handleClick = () => {
-    if (document.querySelectorAll(".check").length == 3) {
-      document.getElementById("click").click();
-      tele.close();
+    const clickAnchor = document.getElementById("click");
+
+    if (document.querySelectorAll(".check").length === 3) {
+      clickAnchor.setAttribute("disabled", "false");//make it clickable
+      clickAnchor.click();//click it
+      clickAnchor.setAttribute("disabled", "true");//disable it after clicking
+      tele.close();//close mini app
     } else {
+      clickAnchor.setAttribute("disabled", "true");
       handleLinks();
     }
   };
