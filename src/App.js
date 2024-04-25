@@ -73,10 +73,26 @@ const FollowComponent = ({ joined, step, type, prompt }) => {
               <section className="flex justify-start items-center h-full">
                 <figure className="w-[69px] h-full mr-[12px] relative">
                   {joined && <CheckMark />}
-                  <img
-                    src="/assets/icons/Group 33567.svg"
-                    className="w-full h-full"
-                  />
+                  {step == 1 && (
+                    <img
+                      src="/assets/images/tiktok.svg"
+                      className="w-full h-full"
+                    />
+                  )}
+
+                  {step == 2 && (
+                    <img
+                      src="/assets/images/youtube.svg"
+                      className="w-full h-full"
+                    />
+                  )}
+
+                  {step == 1 && (
+                    <img
+                      src="/assets/images/onlyfans.svg"
+                      className="w-full h-full"
+                    />
+                  )}
                 </figure>
 
                 <span>{prompt}</span>
@@ -150,10 +166,10 @@ const App = () => {
     const clickAnchor = document.getElementById("click");
 
     if (document.querySelectorAll(".check").length === 3) {
-      clickAnchor.setAttribute("disabled", "false");//make it clickable
-      clickAnchor.click();//click it
-      clickAnchor.setAttribute("disabled", "true");//disable it after clicking
-      tele.close();//close mini app
+      clickAnchor.setAttribute("disabled", "false"); //make it clickable
+      clickAnchor.click(); //click it
+      clickAnchor.setAttribute("disabled", "true"); //disable it after clicking
+      tele.close(); //close mini app
     } else {
       clickAnchor.setAttribute("disabled", "true");
       handleLinks();
