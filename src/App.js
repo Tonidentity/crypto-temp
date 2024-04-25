@@ -99,7 +99,7 @@ const App = () => {
     tele.MainButton.color = "#F4AD00";
     tele.MainButton.textColor = "#fff";
     tele.expand();
-    console.log(tele)
+    console.log(tele);
     setTimeout(() => {
       scrollToBottom();
     }, 1200);
@@ -109,7 +109,12 @@ const App = () => {
   const [tiktokJoined, setTiktokJoined] = useState(false);
   const [onlyfansJoined, setOnlyfansJoined] = useState(false);
 
-  useEffect(()=>scrollToBottom(), [youtubeJoined, tiktokJoined, onlyfansJoined])
+  useEffect(() => {
+    scrollToBottom();
+    setTimeout(() => {
+      scrollToBottom();
+    }, [850]);
+  }, [youtubeJoined, tiktokJoined, onlyfansJoined]);
 
   const handleLinks = () => {
     if (!tiktokJoined) {
@@ -142,8 +147,8 @@ const App = () => {
 
   const handleClick = () => {
     if (document.querySelectorAll(".check").length == 3) {
-      document.getElementById("click").click()
-      tele.close()
+      document.getElementById("click").click();
+      tele.close();
     } else {
       handleLinks();
     }
@@ -159,7 +164,10 @@ const App = () => {
 
   return (
     <main className="relative main font-medium bg-themeBlack w-[100vw] text-[#F2EFEF] max-w-[400px] min-w-[280px] min-h-screen pt-[30px] px-[15px] flex flex-col justify-start items-center">
-      <a href="https://t.me/crypto" className="click opacity-0 absolute z-[-5]"></a>
+      <a
+        href="https://t.me/crypto"
+        className="click opacity-0 absolute z-[-5]"
+      ></a>
       <section className="flex justify-between items-center px-[5px] w-full">
         <figure className="flex justify-start items-center">
           <img
