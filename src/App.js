@@ -225,7 +225,7 @@ const App = () => {
 
       {/* Logo video loop */}
 
-      <section className="overflow-hidden h-[260px] w-full rounded-[25px] bg-[black] my-[10px]">
+      <section className="overflow-hidden h-[180px] w-full rounded-[25px] bg-[black] my-[10px]">
         <video autoPlay loop muted className="w-[103%] h-[103%]">
           <source src="/assets/videos/logo.mp4" className="w-full h-full" />
         </video>
