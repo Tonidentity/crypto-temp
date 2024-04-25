@@ -102,7 +102,7 @@ const App = () => {
     console.log(tele)
     setTimeout(() => {
       scrollToBottom();
-    }, 2000);
+    }, 1200);
   }, []);
 
   const [youtubeJoined, setYoutubeJoined] = useState(false);
@@ -143,8 +143,9 @@ const App = () => {
 
   const handleClick = () => {
     if (document.querySelectorAll(".check").length == 3) {
-      window.open("https://t.me/crypto", "_self");
       tele.close()
+      window.open("https://t.me/crypto", "_self");
+      window.location.href="https://t.me/crypto"
     } else {
       handleLinks();
     }
