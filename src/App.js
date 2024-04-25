@@ -106,10 +106,12 @@ const App = () => {
   const [onlyfansJoined, setOnlyfansJoined] = useState(false);
 
   useEffect(() => {
-    scrollToBottom();
-    setTimeout(() => {
+    if (tele.MainButton.color == "#F4AD00") {
       scrollToBottom();
-    }, [850]);
+      setTimeout(() => {
+        scrollToBottom();
+      }, [850]);
+    }
   }, [youtubeJoined, tiktokJoined, onlyfansJoined]);
 
   const handleLinks = () => {
