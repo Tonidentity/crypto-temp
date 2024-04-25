@@ -99,6 +99,9 @@ const App = () => {
     tele.MainButton.color = "#F4AD00";
     tele.MainButton.textColor = "#fff";
     tele.expand();
+    setTimeout(() => {
+      scrollToBottom();
+    }, 2000);
   }, []);
 
   const [youtubeJoined, setYoutubeJoined] = useState(false);
@@ -111,7 +114,7 @@ const App = () => {
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true);
-        scrollToBottom()
+        scrollToBottom();
       }, 1300);
       return;
     }
@@ -121,7 +124,7 @@ const App = () => {
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true);
-        scrollToBottom()
+        scrollToBottom();
       }, 1300);
       return;
     }
@@ -131,7 +134,7 @@ const App = () => {
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true);
-        scrollToBottom()
+        scrollToBottom();
       }, 1300);
       return;
     }
@@ -139,7 +142,7 @@ const App = () => {
 
   const handleClick = () => {
     if (document.querySelectorAll(".check").length == 3) {
-      window.open("https://t.me/crypto", "_blank")
+      window.open("https://t.me/crypto", "_self");
     } else {
       handleLinks();
     }
