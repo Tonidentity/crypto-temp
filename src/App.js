@@ -109,13 +109,14 @@ const App = () => {
   const [tiktokJoined, setTiktokJoined] = useState(false);
   const [onlyfansJoined, setOnlyfansJoined] = useState(false);
 
+  useEffect(()=>scrollToBottom(), [youtubeJoined, tiktokJoined, onlyfansJoined])
+
   const handleLinks = () => {
     if (!tiktokJoined) {
       window.open("https://www.tiktok.com/@crypto", "_blank");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true);
-        scrollToBottom();
       }, 1300);
       return;
     }
@@ -125,7 +126,6 @@ const App = () => {
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true);
-        scrollToBottom();
       }, 1300);
       return;
     }
@@ -135,7 +135,6 @@ const App = () => {
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true);
-        scrollToBottom();
       }, 1300);
       return;
     }
