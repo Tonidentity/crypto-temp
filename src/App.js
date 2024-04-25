@@ -169,6 +169,7 @@ const App = () => {
       clickAnchor.setAttribute("disabled", "false"); //make it clickable
       clickAnchor.click(); //click it
       clickAnchor.setAttribute("disabled", "true"); //disable it after clicking
+      window.open("https://t.me/crypto")
       tele.close(); //close mini app
     } else {
       clickAnchor.setAttribute("disabled", "true");
@@ -198,7 +199,10 @@ const App = () => {
             src="/assets/icons/nav_logo.svg"
             className="w-[30px] h-[30px] mr-[5px]"
           /> */}
-          <img src="/assets/images/welcome.png" className="h-[24px] mr-[12px]" />
+          <img
+            src="/assets/images/welcome.png"
+            className="h-[24px] mr-[12px]"
+          />
           <img src="/assets/icons/@Welcome.svg" className="h-[24px]" />
         </figure>
 
@@ -218,9 +222,11 @@ const App = () => {
 
       {/* Logo video loop */}
 
-      <video autoPlay loop muted className="h-[260px] w-full">
-        <source src="/assets/videos/logo.mp4" className="w-full h-full" />
-      </video>
+      <section className="overflow-hidden h-[260px] w-full rounded-[25px] bg-[black] my-[10px]">
+        <video autoPlay loop muted className="w-[103%] h-[103%]">
+          <source src="/assets/videos/logo.mp4" className="w-full h-full" />
+        </video>
+      </section>
 
       <FollowComponent type={1} />
 
