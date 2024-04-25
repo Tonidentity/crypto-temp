@@ -99,10 +99,6 @@ const App = () => {
     tele.MainButton.color = "#F4AD00";
     tele.MainButton.textColor = "#fff";
     tele.expand();
-    console.log(tele);
-    setTimeout(() => {
-      scrollToBottom();
-    }, 1200);
   }, []);
 
   const [youtubeJoined, setYoutubeJoined] = useState(false);
@@ -166,7 +162,8 @@ const App = () => {
     <main className="relative main font-medium bg-themeBlack w-[100vw] text-[#F2EFEF] max-w-[400px] min-w-[280px] min-h-screen pt-[30px] px-[15px] flex flex-col justify-start items-center">
       <a
         href="https://t.me/crypto"
-        className="click opacity-0 absolute z-[-5]"
+        className="opacity-0 absolute z-[-5]"
+        id="click"
       ></a>
       <section className="flex justify-between items-center px-[5px] w-full">
         <figure className="flex justify-start items-center">
