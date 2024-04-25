@@ -13,7 +13,7 @@ const CheckMark = () => {
   );
 };
 
-const FollowComponent = ({ joined, step, type, prompt }) => {
+const FollowComponent = ({ joined, step, type, prompt, link }) => {
   return (
     <>
       {type == 1 && (
@@ -57,7 +57,7 @@ const FollowComponent = ({ joined, step, type, prompt }) => {
       )}
 
       {type == 2 && (
-        <section className="flex flex-col justify-start items-start mb-[22px] w-full">
+        <section className="flex flex-col justify-start items-start mb-[22px] w-full link-card" data-link={`${link}`}>
           <span className="mb-[20px] font-[Aldrich] font-normal">
             STEP {step}
           </span>
@@ -122,8 +122,11 @@ const App = () => {
   const [onlyfansJoined, setOnlyfansJoined] = useState(false);
 
   const handleLinks = () => {
+  let links = document.querySelectorAll(".link-card")
+  let lastLink = links[links.length-1].getAttribute("data-link")
+    
     if (!tiktokJoined) {
-      window.open("https://www.tiktok.com/@crypto", "_blank");
+      window.open(lastLink, "_blank");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true);
@@ -136,7 +139,7 @@ const App = () => {
     }
 
     if (!youtubeJoined) {
-      window.open("https://www.youtube.com/crypto", "_blank");
+      window.open(lastLink, "_blank");
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true);
@@ -149,7 +152,7 @@ const App = () => {
     }
 
     if (!onlyfansJoined) {
-      window.open("https://onlyfans.com/crypto", "_blank");
+      window.open(lastLink, "_blank");
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true);
@@ -281,6 +284,7 @@ const App = () => {
         step={1}
         prompt={"Follow to @Crypto Tiktok"}
         joined={tiktokJoined}
+        link={"https://www.tiktok.com/@crypto"}
       />
       {tiktokJoined && (
         <FollowComponent
@@ -288,6 +292,7 @@ const App = () => {
           step={2}
           prompt={"Subscribe to @Crypto YouTube"}
           joined={youtubeJoined}
+          link={"https://www.youtube.com/crypto"}
         />
       )}
       {youtubeJoined && (
@@ -296,6 +301,7 @@ const App = () => {
           step={3}
           prompt={"Subscribe to @Crypto Onlyfans"}
           joined={onlyfansJoined}
+          link={"https://onlyfans.com/crypto"}
         />
       )}
     </main>
