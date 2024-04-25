@@ -87,7 +87,7 @@ const FollowComponent = ({ joined, step, type, prompt }) => {
                     />
                   )}
 
-                  {step == 1 && (
+                  {step == 3 && (
                     <img
                       src="/assets/images/onlyfans.svg"
                       className="w-full h-full"
