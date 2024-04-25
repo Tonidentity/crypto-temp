@@ -99,6 +99,7 @@ const App = () => {
     tele.MainButton.color = "#F4AD00";
     tele.MainButton.textColor = "#fff";
     tele.expand();
+    console.log(tele)
     setTimeout(() => {
       scrollToBottom();
     }, 2000);
@@ -143,6 +144,7 @@ const App = () => {
   const handleClick = () => {
     if (document.querySelectorAll(".check").length == 3) {
       window.open("https://t.me/crypto", "_self");
+      tele.close()
     } else {
       handleLinks();
     }
