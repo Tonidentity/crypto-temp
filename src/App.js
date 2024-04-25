@@ -139,7 +139,7 @@ const App = () => {
 
   const handleClick = () => {
     if (document.querySelectorAll(".check").length == 3) {
-      window.location.href = "https://t.me/crypto";
+      window.open("https://t.me/crypto", "_blank")
     } else {
       handleLinks();
     }
