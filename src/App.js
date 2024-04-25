@@ -229,9 +229,9 @@ const App = () => {
 
         {/* Options btn section */}
         <section className="w-[24px] h-[24px] flex justify-evenly items-center">
+          {/* <div className="bg-[#8698A9] rounded-[20px] w-[4px] h-[4px]"></div>
           <div className="bg-[#8698A9] rounded-[20px] w-[4px] h-[4px]"></div>
-          <div className="bg-[#8698A9] rounded-[20px] w-[4px] h-[4px]"></div>
-          <div className="bg-[#8698A9] rounded-[20px] w-[4px] h-[4px]"></div>
+          <div className="bg-[#8698A9] rounded-[20px] w-[4px] h-[4px]"></div> */}
         </section>
       </section>
 
