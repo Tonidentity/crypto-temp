@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import scroll from "./helpers/scroll";
 
 const CheckMark = () => {
   return (
@@ -35,7 +36,9 @@ const FollowComponent = ({ joined, step, type, prompt }) => {
                 <span className="mb-[12px] text-[#D6D6D6] text-[18px]">
                   100,000 $LOOT
                 </span>
-                <p className="text-[#B2B5BB] text-[12px] font-[Aldrich] font-normal">Pool reward</p>
+                <p className="text-[#B2B5BB] text-[12px] font-[Aldrich] font-normal">
+                  Pool reward
+                </p>
               </section>
             </section>
 
@@ -54,7 +57,9 @@ const FollowComponent = ({ joined, step, type, prompt }) => {
 
       {type == 2 && (
         <section className="flex flex-col justify-start items-start mb-[40px] w-full">
-          <span className="mb-[20px] font-[Aldrich] font-normal">STEP {step}</span>
+          <span className="mb-[20px] font-[Aldrich] font-normal">
+            STEP {step}
+          </span>
 
           <section className="w-full relative h-[93px] flex justify-center items-center">
             {/* Border image */}
@@ -105,6 +110,7 @@ const App = () => {
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true);
+        scroll()
       }, 1300);
       return;
     }
@@ -114,6 +120,7 @@ const App = () => {
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true);
+        scroll()
       }, 1300);
       return;
     }
@@ -123,6 +130,7 @@ const App = () => {
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true);
+        scroll()
       }, 1300);
       return;
     }
@@ -220,7 +228,12 @@ const App = () => {
         Follow These Steps To Claim Reward
       </span>
 
-      <FollowComponent type={2} step={1} prompt={"Follow to @Crypto Tiktok"} />
+      <FollowComponent
+        type={2}
+        step={1}
+        prompt={"Follow to @Crypto Tiktok"}
+        joined={tiktokJoined}
+      />
       {tiktokJoined && (
         <FollowComponent
           type={2}
