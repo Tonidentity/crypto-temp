@@ -17,7 +17,7 @@ const FollowComponent = ({ joined, step, type, prompt }) => {
   return (
     <>
       {type == 1 && (
-        <section className="w-full my-[40px] relative h-[93px] flex justify-center items-center">
+        <section className="w-full my-[20px] relative h-[93px] flex justify-center items-center">
           {/* Border image */}
           <img
             src="/assets/images/gradient_border.svg"
@@ -57,7 +57,7 @@ const FollowComponent = ({ joined, step, type, prompt }) => {
       )}
 
       {type == 2 && (
-        <section className="flex flex-col justify-start items-start mb-[40px] w-full">
+        <section className="flex flex-col justify-start items-start mb-[22px] w-full">
           <span className="mb-[20px] font-[Aldrich] font-normal">
             STEP {step}
           </span>
@@ -197,7 +197,7 @@ const App = () => {
             src="/assets/icons/nav_logo.svg"
             className="w-[30px] h-[30px] mr-[5px]"
           />
-          <img src="/assets/icons/@Welcome.svg" className="h-[24px]" />
+          <img src="/assets/images/welcome.png" className="h-[24px]" />
         </figure>
 
         <figure className="flex justify-start">
@@ -236,7 +236,7 @@ const App = () => {
         <section className="flex justify-start items-center h-[46px]">
           <figure className="w-[46px] h-full flex justify-center items-center bg-[#31333D] rounded-[50px] mr-[10px]">
             <img
-              src="/assets/images/logo-2.svg"
+              src="/assets/images/crypto.png"
               className="w-[32px] h-[32px]"
             />
           </figure>
