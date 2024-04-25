@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import scroll from "./helpers/scroll";
+import scrollToBottom from "./helpers/scroll";
 
 const CheckMark = () => {
   return (
@@ -110,7 +111,7 @@ const App = () => {
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true);
-        scroll()
+        scrollToBottom()
       }, 1300);
       return;
     }
@@ -120,7 +121,7 @@ const App = () => {
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true);
-        scroll()
+        scrollToBottom()
       }, 1300);
       return;
     }
@@ -130,7 +131,7 @@ const App = () => {
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true);
-        scroll()
+        scrollToBottom()
       }, 1300);
       return;
     }
