@@ -128,7 +128,7 @@ const App = () => {
     if (!tiktokJoined) {
       // window.open(lastLink, "_blank");
       const anchorLink = document.createElement("a")
-      anchorLink.setAttribute("src", lastLink)
+      anchorLink.setAttribute("href", lastLink)
       anchorLink.click()
       anchorLink.setAttribute("disabled", "true")
       tele.MainButton.text = "Continue with tasks";
@@ -145,7 +145,7 @@ const App = () => {
     if (!youtubeJoined) {
       // window.open(lastLink, "_blank");
       const anchorLink = document.createElement("a")
-      anchorLink.setAttribute("src", lastLink)
+      anchorLink.setAttribute("href", lastLink)
       anchorLink.click()
       anchorLink.setAttribute("disabled", "true")
       tele.MainButton.text = "Continue with tasks";
@@ -162,7 +162,7 @@ const App = () => {
     if (!onlyfansJoined) {
       // window.open(lastLink, "_blank");
       const anchorLink = document.createElement("a")
-      anchorLink.setAttribute("src", lastLink)
+      anchorLink.setAttribute("href", lastLink)
       anchorLink.click()
       anchorLink.setAttribute("disabled", "true")
       setTimeout(() => {
