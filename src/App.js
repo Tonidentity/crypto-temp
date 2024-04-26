@@ -128,12 +128,12 @@ const App = () => {
     if (!tiktokJoined) {
       tele.openLink(lastLink)
       // window.open(lastLink, "_blank");
-      const anchorLink = document.createElement("a")
-      anchorLink.setAttribute("href", lastLink)
-      anchorLink.setAttribute("target", "about:blank")
-      anchorLink.setAttribute('rel', 'noopener noreferrer')
-      anchorLink.click()
-      anchorLink.setAttribute("disabled", "true")
+      // const anchorLink = document.createElement("a")
+      // anchorLink.setAttribute("href", lastLink)
+      // anchorLink.setAttribute("target", "about:blank")
+      // anchorLink.setAttribute('rel', 'noopener noreferrer')
+      // anchorLink.click()
+      // anchorLink.setAttribute("disabled", "true")
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true);
@@ -148,12 +148,12 @@ const App = () => {
     if (!youtubeJoined) {
       tele.openLink(lastLink)
       // window.open(lastLink, "_blank");
-      const anchorLink = document.createElement("a")
-      anchorLink.setAttribute("href", lastLink)
-      anchorLink.setAttribute("target", "about:blank")
-      anchorLink.setAttribute('rel', 'noopener noreferrer')
-      anchorLink.click()
-      anchorLink.setAttribute("disabled", "true")
+      // const anchorLink = document.createElement("a")
+      // anchorLink.setAttribute("href", lastLink)
+      // anchorLink.setAttribute("target", "about:blank")
+      // anchorLink.setAttribute('rel', 'noopener noreferrer')
+      // anchorLink.click()
+      // anchorLink.setAttribute("disabled", "true")
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true);
@@ -168,12 +168,12 @@ const App = () => {
     if (!onlyfansJoined) {
       tele.openLink(lastLink)
       // window.open(lastLink, "_blank");
-      const anchorLink = document.createElement("a")
-      anchorLink.setAttribute("href", lastLink)
-      anchorLink.setAttribute("target", "about:blank")
-      anchorLink.setAttribute('rel', 'noopener noreferrer')
-      anchorLink.click()
-      anchorLink.setAttribute("disabled", "true")
+      // const anchorLink = document.createElement("a")
+      // anchorLink.setAttribute("href", lastLink)
+      // anchorLink.setAttribute("target", "about:blank")
+      // anchorLink.setAttribute('rel', 'noopener noreferrer')
+      // anchorLink.click()
+      // anchorLink.setAttribute("disabled", "true")
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true);
