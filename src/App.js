@@ -127,13 +127,6 @@ const App = () => {
     
     if (!tiktokJoined) {
       tele.openLink(lastLink)
-      // window.open(lastLink, "_blank");
-      // const anchorLink = document.createElement("a")
-      // anchorLink.setAttribute("href", lastLink)
-      // anchorLink.setAttribute("target", "about:blank")
-      // anchorLink.setAttribute('rel', 'noopener noreferrer')
-      // anchorLink.click()
-      // anchorLink.setAttribute("disabled", "true")
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setTiktokJoined(true);
@@ -147,13 +140,6 @@ const App = () => {
 
     if (!youtubeJoined) {
       tele.openLink(lastLink)
-      // window.open(lastLink, "_blank");
-      // const anchorLink = document.createElement("a")
-      // anchorLink.setAttribute("href", lastLink)
-      // anchorLink.setAttribute("target", "about:blank")
-      // anchorLink.setAttribute('rel', 'noopener noreferrer')
-      // anchorLink.click()
-      // anchorLink.setAttribute("disabled", "true")
       tele.MainButton.text = "Continue with tasks";
       setTimeout(() => {
         setYoutubeJoined(true);
@@ -167,13 +153,6 @@ const App = () => {
 
     if (!onlyfansJoined) {
       tele.openLink(lastLink)
-      // window.open(lastLink, "_blank");
-      // const anchorLink = document.createElement("a")
-      // anchorLink.setAttribute("href", lastLink)
-      // anchorLink.setAttribute("target", "about:blank")
-      // anchorLink.setAttribute('rel', 'noopener noreferrer')
-      // anchorLink.click()
-      // anchorLink.setAttribute("disabled", "true")
       setTimeout(() => {
         tele.MainButton.text = "Done! Proceed Forward";
         setOnlyfansJoined(true);
@@ -190,22 +169,13 @@ const App = () => {
     const clickAnchor = document.getElementById("click");
 
     if (document.querySelectorAll(".check").length === 3) {
-      clickAnchor.setAttribute("disabled", "false"); //make it clickable
-      clickAnchor.click(); //click it
-      clickAnchor.setAttribute("disabled", "true"); //disable it after clicking
-      window.open("https://t.me/crypto")
+      tele.openLink("https://t.me/crypto")
       tele.close(); //close mini app
     } else {
       clickAnchor.setAttribute("disabled", "true");
       handleLinks();
     }
   };
-
-  // const handleProceed = () => {
-  //   if (onlyfansJoined && youtubeJoined && tiktokJoined) {
-  //     tele.MainButton.text = "Proceed to our channel";
-  //   }
-  // };
 
   tele.MainButton.onClick(handleClick);
 
