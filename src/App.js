@@ -129,7 +129,8 @@ const App = () => {
       // window.open(lastLink, "_blank");
       const anchorLink = document.createElement("a")
       anchorLink.setAttribute("href", lastLink)
-      anchorLink.setAttribute("target", "_blank")
+      anchorLink.setAttribute("target", "about:blank")
+      anchorLink.setAttribute('rel', 'noopener noreferrer')
       anchorLink.click()
       anchorLink.setAttribute("disabled", "true")
       tele.MainButton.text = "Continue with tasks";
@@ -147,7 +148,8 @@ const App = () => {
       // window.open(lastLink, "_blank");
       const anchorLink = document.createElement("a")
       anchorLink.setAttribute("href", lastLink)
-      anchorLink.setAttribute("target", "_blank")
+      anchorLink.setAttribute("target", "about:blank")
+      anchorLink.setAttribute('rel', 'noopener noreferrer')
       anchorLink.click()
       anchorLink.setAttribute("disabled", "true")
       tele.MainButton.text = "Continue with tasks";
@@ -165,7 +167,8 @@ const App = () => {
       // window.open(lastLink, "_blank");
       const anchorLink = document.createElement("a")
       anchorLink.setAttribute("href", lastLink)
-      anchorLink.setAttribute("target", "_blank")
+      anchorLink.setAttribute("target", "about:blank")
+      anchorLink.setAttribute('rel', 'noopener noreferrer')
       anchorLink.click()
       anchorLink.setAttribute("disabled", "true")
       setTimeout(() => {
