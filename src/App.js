@@ -126,6 +126,7 @@ const App = () => {
   let lastLink = links[links.length-1].getAttribute("data-link")
     
     if (!tiktokJoined) {
+      tele.openLink(lastLink)
       // window.open(lastLink, "_blank");
       const anchorLink = document.createElement("a")
       anchorLink.setAttribute("href", lastLink)
@@ -145,6 +146,7 @@ const App = () => {
     }
 
     if (!youtubeJoined) {
+      tele.openLink(lastLink)
       // window.open(lastLink, "_blank");
       const anchorLink = document.createElement("a")
       anchorLink.setAttribute("href", lastLink)
@@ -164,6 +166,7 @@ const App = () => {
     }
 
     if (!onlyfansJoined) {
+      tele.openLink(lastLink)
       // window.open(lastLink, "_blank");
       const anchorLink = document.createElement("a")
       anchorLink.setAttribute("href", lastLink)
